@@ -17,6 +17,23 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Table(name="books")
 public class Book {
 	
+	public Book(){
+		super();
+	}
+	
+	
+	public Book(Long id, String title, String description, String language, Integer numberOfPages, Date createdAt,
+			Date updatedAt) {
+		this.id = id;
+		this.title = title;
+		this.description = description;
+		this.language = language;
+		this.numberOfPages = numberOfPages;
+		this.createdAt = createdAt;
+		this.updatedAt = updatedAt;
+	}
+	
+	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -35,13 +52,6 @@ public class Book {
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date updatedAt;
     
-    
-   public Book(String title, String description, String language, Integer numberOfPages) {
-    	this.title = title;
-		this.description = description;
-		this.language = language;
-		this.numberOfPages = numberOfPages;
-	}
 
 	@PrePersist
     protected void onCreate(){
@@ -51,8 +61,6 @@ public class Book {
     protected void onUpdate(){
         this.updatedAt = new Date();
     }
-    
-    
     
     
 	public Long getId() {
@@ -97,5 +105,7 @@ public class Book {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
+	
+	
 
 }

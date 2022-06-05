@@ -31,7 +31,14 @@ public class BooksApi {
     		@RequestParam(value="language") String lang, 
     		@RequestParam(value="pages") Integer numOfPages
     		) {
-        Book book = new Book(title, desc, lang, numOfPages);
+        Book book = new Book(
+        		null,
+        		title,
+        		desc,
+        		lang,
+        		numOfPages,
+        		null,
+        		null);
         return bookService.createBook(book);
     }
 	
@@ -48,7 +55,12 @@ public class BooksApi {
     		@RequestParam(value="description") String desc,
     		@RequestParam(value="language") String lang,
     		@RequestParam(value="pages") Integer numOfPages) {
-        Book book = bookService.updateBook(id, title, desc, lang, numOfPages);
+        Book book = bookService.updateBook(
+        		id,
+        		title,
+        		desc,
+        		lang,
+        		numOfPages);
         return book;
     }
 	

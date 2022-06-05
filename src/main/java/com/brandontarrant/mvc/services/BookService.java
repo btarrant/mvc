@@ -1,5 +1,6 @@
 package com.brandontarrant.mvc.services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,8 +38,8 @@ public class BookService {
     }
     
     // updates a book if the IDs match
-    public Book updateBook(Book book) {
-		return bookRepo.save(book);
+    public Book updateBook(Long id, String title, String desc, String lang, Integer numOfPages) {
+		return bookRepo.save(findBook(null));
 	}
     
     // deletes a book by the ID
@@ -48,4 +49,9 @@ public class BookService {
 			bookRepo.deleteById(id);
 		}
     }
+
+	public ArrayList<Book> getAllBooks() {
+		return null;
+	}
+
 }
